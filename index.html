@@ -1,0 +1,58 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..58be7b0445f1a987d1484c4d32a30fc21075412d
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,48 @@
++<!DOCTYPE html>
++<html lang="pt-BR">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Lista de Presentes - Guilherme &amp; Seline</title>
++  <link rel="stylesheet" href="styles.css" />
++</head>
++<body>
++  <header class="topo">
++    <h1>Lista de Presentes - Guilherme &amp; Seline</h1>
++    <p>Escolha um presente, reserve e finalize a compra no link da loja.</p>
++  </header>
++
++  <main>
++    <section class="controles">
++      <h2>Personalizar cores do site</h2>
++      <label for="bgColor">Cor de fundo:</label>
++      <input type="color" id="bgColor" value="#f7f3ef" />
++
++      <label for="cardColor">Cor dos cards:</label>
++      <input type="color" id="cardColor" value="#ffffff" />
++
++      <button id="salvarCores">Salvar cores</button>
++      <button id="resetarCores" class="secundario">Resetar padrão</button>
++    </section>
++
++    <section class="produtos" id="listaProdutos"></section>
++  </main>
++
++  <template id="produtoTemplate">
++    <article class="card">
++      <img class="foto" alt="" />
++      <h3 class="nome"></h3>
++      <p class="status">Status: <span>Livre</span></p>
++      <div class="acoes">
++        <a class="btn" target="_blank" rel="noopener noreferrer">Comprar presente</a>
++        <button class="btn reservar">Reservar</button>
++        <button class="btn secundario desreservar">Desfazer reserva</button>
++        <button class="btn confirmar">Já comprei / fiz PIX</button>
++      </div>
++      <p class="mensagem"></p>
++    </article>
++  </template>
++
++  <script src="script.js"></script>
++</body>
++</html>
+ 
+EOF
+)
